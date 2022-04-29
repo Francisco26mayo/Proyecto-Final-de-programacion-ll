@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bibliotecasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombres" Type="nchar" MaxLength="100" />
+          <Property Name="Pais_origen" Type="nchar" MaxLength="100" />
+          <Property Name="Idioma_nativo" Type="nchar" MaxLength="100" />
+          <Property Name="Estado" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Bibliogafia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="60" />
+          <Property Name="Estado" Type="nchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="Editora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Descripcion " Type="nchar" MaxLength="10" />
+          <Property Name="Estado" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="60" />
+          <Property Name="cedula" Type="nchar" MaxLength="60" />
+          <Property Name="tanda_labor" Type="nchar" MaxLength="60" />
+          <Property Name="porciento_comision" Type="nchar" MaxLength="60" />
+          <Property Name="Fecha_Ingreso" Type="date" />
+          <Property Name="Estado" Type="nchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="idioma" Type="nchar" MaxLength="80" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="90" />
+          <Property Name="Estado" Type="nchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="Libros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="90" />
+          <Property Name="Signatura_topografica" Type="nchar" MaxLength="80" />
+          <Property Name="Isbn" Type="nchar" MaxLength="90" />
+          <Property Name=" Tipo_bibliografia" Type="nchar" MaxLength="80" />
+          <Property Name="Autores" Type="nchar" MaxLength="60" />
+          <Property Name="editora" Type="nchar" MaxLength="50" />
+          <Property Name="año_publicacion" Type="date" />
+          <Property Name="ciencia" Type="nchar" MaxLength="90" />
+          <Property Name="Idioma" Type="nchar" MaxLength="70" />
+          <Property Name="Estado" Type="nchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="Prestamo_devolucion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="prestamo" Type="nchar" MaxLength="60" />
+          <Property Name="Empleado" Type="nchar" MaxLength="50" />
+          <Property Name="Libro" Type="nchar" MaxLength="40" />
+          <Property Name="usuario" Type="nchar" MaxLength="40" />
+          <Property Name="Fecha_prestamo" Type="date" />
+          <Property Name="Fecha_evolucion" Type="date" />
+          <Property Name="Monto" Type="nchar" MaxLength="50" />
+          <Property Name="cantidad_dia" Type="nchar" MaxLength="50" />
+          <Property Name="comentario" Type="nchar" MaxLength="50" />
+          <Property Name="Estado" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="usurio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="80" />
+          <Property Name="cedula" Type="nchar" MaxLength="70" />
+          <Property Name="carnet" Type="date" />
+          <Property Name="tipo_persona" Type="nchar" MaxLength="50" />
+          <Property Name="Estado" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="bibliotecasModelStoreContainer">
+          <EntitySet Name="Autores" EntityType="Self.Autores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bibliogafia" EntityType="Self.Bibliogafia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Editora" EntityType="Self.Editora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Idioma" EntityType="Self.Idioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Libros" EntityType="Self.Libros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamo_devolucion" EntityType="Self.Prestamo_devolucion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usurio" EntityType="Self.usurio" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bibliotecasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Pais_origen" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Idioma_nativo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bibliogafia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="80" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Editora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion_" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="cedula" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="tanda_labor" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="porciento_comision" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Precision="0" />
+          <Property Name="Estado" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Idioma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="idioma1" Type="String" MaxLength="80" FixedLength="true" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Libros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
+          <Property Name="Signatura_topografica" Type="String" MaxLength="80" FixedLength="true" Unicode="true" />
+          <Property Name="Isbn" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
+          <Property Name="C_Tipo_bibliografia" Type="String" MaxLength="80" FixedLength="true" Unicode="true" />
+          <Property Name="Autores" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="editora" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="año_publicacion" Type="DateTime" Precision="0" />
+          <Property Name="ciencia" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
+          <Property Name="Idioma" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Prestamo_devolucion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="prestamo" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Empleado" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Libro" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="Fecha_prestamo" Type="DateTime" Precision="0" />
+          <Property Name="Fecha_evolucion" Type="DateTime" Precision="0" />
+          <Property Name="Monto" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="cantidad_dia" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="comentario" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="usurio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="true" Unicode="true" />
+          <Property Name="cedula" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="carnet" Type="DateTime" Precision="0" />
+          <Property Name="tipo_persona" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="bibliotecasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autores" EntityType="Self.Autores" />
+          <EntitySet Name="Bibliogafia" EntityType="Self.Bibliogafia" />
+          <EntitySet Name="Editora" EntityType="Self.Editora" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="Idioma" EntityType="Self.Idioma" />
+          <EntitySet Name="Libros" EntityType="Self.Libros" />
+          <EntitySet Name="Prestamo_devolucion" EntityType="Self.Prestamo_devolucion" />
+          <EntitySet Name="usurio" EntityType="Self.usurio" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bibliotecasModelStoreContainer" CdmEntityContainer="bibliotecasEntities">
+          <EntitySetMapping Name="Autores">
+            <EntityTypeMapping TypeName="bibliotecasModel.Autores">
+              <MappingFragment StoreEntitySet="Autores">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Pais_origen" ColumnName="Pais_origen" />
+                <ScalarProperty Name="Idioma_nativo" ColumnName="Idioma_nativo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bibliogafia">
+            <EntityTypeMapping TypeName="bibliotecasModel.Bibliogafia">
+              <MappingFragment StoreEntitySet="Bibliogafia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editora">
+            <EntityTypeMapping TypeName="bibliotecasModel.Editora">
+              <MappingFragment StoreEntitySet="Editora">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion_" ColumnName="Descripcion " />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="bibliotecasModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="tanda_labor" ColumnName="tanda_labor" />
+                <ScalarProperty Name="porciento_comision" ColumnName="porciento_comision" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idioma">
+            <EntityTypeMapping TypeName="bibliotecasModel.Idioma">
+              <MappingFragment StoreEntitySet="Idioma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="idioma1" ColumnName="idioma" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Libros">
+            <EntityTypeMapping TypeName="bibliotecasModel.Libros">
+              <MappingFragment StoreEntitySet="Libros">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Signatura_topografica" ColumnName="Signatura_topografica" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="C_Tipo_bibliografia" ColumnName=" Tipo_bibliografia" />
+                <ScalarProperty Name="Autores" ColumnName="Autores" />
+                <ScalarProperty Name="editora" ColumnName="editora" />
+                <ScalarProperty Name="año_publicacion" ColumnName="año_publicacion" />
+                <ScalarProperty Name="ciencia" ColumnName="ciencia" />
+                <ScalarProperty Name="Idioma" ColumnName="Idioma" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamo_devolucion">
+            <EntityTypeMapping TypeName="bibliotecasModel.Prestamo_devolucion">
+              <MappingFragment StoreEntitySet="Prestamo_devolucion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="prestamo" ColumnName="prestamo" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Libro" ColumnName="Libro" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Fecha_prestamo" ColumnName="Fecha_prestamo" />
+                <ScalarProperty Name="Fecha_evolucion" ColumnName="Fecha_evolucion" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="cantidad_dia" ColumnName="cantidad_dia" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usurio">
+            <EntityTypeMapping TypeName="bibliotecasModel.usurio">
+              <MappingFragment StoreEntitySet="usurio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
+                <ScalarProperty Name="tipo_persona" ColumnName="tipo_persona" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
